@@ -56,4 +56,18 @@ public class billTest {
 		}
 	}
 
+	@Test
+	public final void whenItemsEnteredMoreThan20ThenFullBillReturnedWith20() {
+
+		String total = bill.main(new String[] { "steak", "cheese", "cola", "coffee", "steak", "steak", "steak", "steak",
+				"steak", "steak", "steak", "steak", "steak", "steak", "steak", "steak", "steak", "steak", "steak",
+				"steak", "steak", "steak", "steak", "steak", "steak", "steak", "steak", "steak", "steak" });
+
+		if (total.equals("140.50")) {
+			Assert.assertTrue(true);
+		} else {
+			Assert.assertTrue(false);
+		}
+	}
+
 }
