@@ -14,7 +14,9 @@ public class bill {
 		BigDecimal totalBill = new BigDecimal("0.00");
 		BigDecimal serviceCharge = new BigDecimal("0.00");
 		BigDecimal serviceChargeRate = new BigDecimal("0.10");
+		BigDecimal hotServiceChargeRate = new BigDecimal("0.20");
 		boolean foodIncluded = false;
+		boolean hotFoodIncluded = false;
 
 		for (int i = 0; i < args.length; i++) {
 
@@ -31,6 +33,7 @@ public class bill {
 			} else if (args[i] == "steak") {
 				totalBill = totalBill.add(costSteak);
 				foodIncluded = true;
+				hotFoodIncluded = true;
 				System.out.println("1 Steak Sandwich := £" + costSteak);
 			}
 		}
@@ -39,6 +42,12 @@ public class bill {
 			serviceCharge = totalBill.multiply(serviceChargeRate);
 			System.out.println("Service := £" + serviceCharge);
 		}
+		if (hotFoodIncluded) {
+			serviceCharge = totalBill.multiply(hotServiceChargeRate);
+			System.out.println("Hot Service := £" + serviceCharge);
+		}
+
+		totalBill = totalBill.add(serviceCharge);
 		System.out.println("" + "Total Bill := £" + totalBill);
 		return totalBill.toString();
 	}
