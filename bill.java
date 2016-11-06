@@ -1,6 +1,7 @@
 package service;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 
 public class bill {
 
@@ -17,6 +18,7 @@ public class bill {
 		BigDecimal hotServiceChargeRate = new BigDecimal("0.20");
 		boolean foodIncluded = false;
 		boolean hotFoodIncluded = false;
+		DecimalFormat df = new DecimalFormat("#.00");
 
 		for (int i = 0; i < args.length; i++) {
 
@@ -40,15 +42,15 @@ public class bill {
 
 		if (foodIncluded) {
 			serviceCharge = totalBill.multiply(serviceChargeRate);
-			System.out.println("Service := £" + serviceCharge);
+			System.out.println("Service := £" + df.format(serviceCharge));
 		}
 		if (hotFoodIncluded) {
 			serviceCharge = totalBill.multiply(hotServiceChargeRate);
-			System.out.println("Hot Service := £" + serviceCharge);
+			System.out.println("Hot Service := £" + df.format(serviceCharge));
 		}
 
 		totalBill = totalBill.add(serviceCharge);
-		System.out.println("" + "Total Bill := £" + totalBill);
+		System.out.println("Total Bill := £" + df.format(totalBill));
 		return totalBill.toString();
 	}
 

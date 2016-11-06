@@ -46,4 +46,14 @@ public class billTest {
 		}
 	}
 
+	@Test
+	public final void whenHotFoodItemsArePurchasedThenTheyWillIncurServiceChargeOf20rounded() {
+		String total = bill.main(new String[] { "steak", "cheese", "cola", "coffee" });
+		if (total.equalsIgnoreCase("9.60")) {
+			Assert.assertTrue(true);
+		} else {
+			Assert.assertTrue(false);
+		}
+	}
+
 }
