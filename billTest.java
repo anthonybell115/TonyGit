@@ -70,4 +70,22 @@ public class billTest {
 		}
 	}
 
+	@Test
+	public final void whenCoffeeItemEnteredThenTotalBillCostOfCoffeeReturned() {
+
+		String total = bill.main(new String[] { "coffee" });
+		if (total.equals("1.0")) {
+			Assert.assertTrue(true);
+		}
+	}
+
+	@Test
+	public final void whenCheeseItemEnteredThenTotalBillCostOfCheesePlusSCReturned() {
+
+		String total = bill.main(new String[] { "cheese" });
+		if (total.equals("2.0")) {
+			Assert.assertTrue(true);
+		}
+	}
+
 }

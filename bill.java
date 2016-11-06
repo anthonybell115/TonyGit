@@ -18,7 +18,7 @@ public class bill {
 		BigDecimal hotServiceChargeRate = new BigDecimal("0.20");
 		boolean foodIncluded = false;
 		boolean hotFoodIncluded = false;
-		DecimalFormat df = new DecimalFormat("#.00");
+		DecimalFormat df = new DecimalFormat("0.00");
 		BigDecimal maxServiceCharge = new BigDecimal("20.00");
 
 		for (int i = 0; i < args.length; i++) {
@@ -43,11 +43,11 @@ public class bill {
 
 		if (foodIncluded) {
 			serviceCharge = totalBill.multiply(serviceChargeRate);
-			System.out.println("Service := £" + df.format(serviceCharge));
+
 		}
 		if (hotFoodIncluded) {
 			serviceCharge = totalBill.multiply(hotServiceChargeRate);
-			System.out.println("Hot Service := £" + df.format(serviceCharge));
+
 		}
 
 		int i = serviceCharge.compareTo(maxServiceCharge);
@@ -56,6 +56,7 @@ public class bill {
 		}
 
 		totalBill = totalBill.add(serviceCharge);
+		System.out.println("Service Charge := £" + df.format(serviceCharge));
 		System.out.println("Total Bill := £" + df.format(totalBill));
 		return totalBill.toString();
 	}
